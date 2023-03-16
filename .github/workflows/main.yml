@@ -1,0 +1,16 @@
+name: Disable cluster_endtoend workflows
+
+on: push
+
+jobs:
+  disable_workflows:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Workflow Toggle
+        uses: StephenMP/workflow-toggle@v1.0.0
+        with:
+          token: ${{ secrets.YOUR_GITHUB_TOKEN }}
+          workflow_id: cluster_endtoend*
+          action: disable
+          owner: earayu
+          repo: vitess
